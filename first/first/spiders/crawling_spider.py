@@ -7,11 +7,11 @@ class CrawlingSpider(CrawlSpider):
     start_urls = ["https://taaghche.com/"]
     rules = (
         Rule(LinkExtractor(allow=('/category/',)), callback='parse_item',),
-    #    Rule(LinkExtractor(allow=('/category/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B1%D9%85%D8%A7%D9%86/')),)
+        Rule(LinkExtractor(allow=('/category/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B1%D9%85%D8%A7%D9%86/')),)
     )
-    def pars_item(self,response):
+    def parse_item(self,response):
         yield{
-            "title": response.css(".bookCard_bookTitle__ELp4O div::text").get(),
+            "title": response.css(".bookCard_book__6dU_a .bookCard_bookInfo__TcPHR a  div::text").get(),
             "auther": response.css(".bookCard_bookAuthor__myAZB::text").get(),
             "price": response.css(".bookCard_price__zOAwb::text").get()
 
